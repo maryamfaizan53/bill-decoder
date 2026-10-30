@@ -1,0 +1,265 @@
+{
+ "bill_id": "KESC_0008",
+ "title": "K-Electric, April 2026",
+ "extraction": {
+  "level1": {
+   "provider": "KE",
+   "tariff": "A1-R",
+   "sanctioned_load_kw": 3,
+   "bill_month": "2026-04",
+   "reading_date": "2026-04-03",
+   "issue_date": "2026-04-07",
+   "due_date": "2026-04-21",
+   "previous_reading": 8819,
+   "current_reading": 8970,
+   "units_consumed": 151,
+   "charges": [
+    {
+     "type": "fixed",
+     "amount": 900
+    },
+    {
+     "type": "energy",
+     "amount": 1054
+    },
+    {
+     "type": "energy",
+     "amount": 663.51
+    },
+    {
+     "type": "quarterly_adjustment",
+     "amount": 52.91
+    },
+    {
+     "type": "fpa",
+     "amount": 125.27
+    },
+    {
+     "type": "surcharge",
+     "amount": 64.93
+    }
+   ],
+   "total_charges": 2860.62,
+   "taxes": [
+    {
+     "type": "electricity_duty",
+     "amount": 29.41
+    },
+    {
+     "type": "gst",
+     "amount": 520.21
+    },
+    {
+     "type": "municipal_tax",
+     "amount": 20
+    }
+   ],
+   "total_taxes": 569.62,
+   "current_bill": 3430.24,
+   "arrears": -0.53,
+   "payable_within_due_date": 3430,
+   "payable_after_due_date": 3716
+  },
+  "extra": {
+   "line_details": [
+    {
+     "label": "Fixed Charges",
+     "section": "charges",
+     "units": 3,
+     "rate": 300,
+     "amount": 900
+    },
+    {
+     "label": "Variable Upto 100 Units (Protected)",
+     "section": "charges",
+     "units": 100,
+     "rate": 10.54,
+     "amount": 1054
+    },
+    {
+     "label": "Variable Upto 200 Units (Protected)",
+     "section": "charges",
+     "units": 51,
+     "rate": 13.01,
+     "amount": 663.51
+    },
+    {
+     "label": "Uniform Quarterly Adjustment",
+     "section": "charges",
+     "units": 151,
+     "rate": 0.3504,
+     "amount": 52.91
+    },
+    {
+     "label": "FCA :Feb-26",
+     "section": "charges",
+     "units": 88,
+     "rate": 1.4235,
+     "amount": 125.27
+    },
+    {
+     "label": "Additional Surcharge (PHL)",
+     "section": "charges",
+     "units": 151,
+     "rate": 0.43,
+     "amount": 64.93
+    },
+    {
+     "label": "Electricity Duty",
+     "section": "taxes",
+     "units": null,
+     "rate": null,
+     "amount": 29.41
+    },
+    {
+     "label": "Sales Tax u/s 3(1)",
+     "section": "taxes",
+     "units": null,
+     "rate": null,
+     "amount": 520.21
+    },
+    {
+     "label": "MUCT (KMC)",
+     "section": "taxes",
+     "units": null,
+     "rate": null,
+     "amount": 20
+    },
+    {
+     "label": "Opening Balance",
+     "section": "other",
+     "units": null,
+     "rate": null,
+     "amount": 2576.47
+    },
+    {
+     "label": "Payments/Adjustment",
+     "section": "other",
+     "units": null,
+     "rate": null,
+     "amount": -2577
+    }
+   ],
+   "late_payment_amounts": [
+    {
+     "label": "22–24 Apr, with 5% LPS",
+     "amount": 3574
+    },
+    {
+     "label": "After 24 Apr, with 10% LPS",
+     "amount": 3716
+    }
+   ],
+   "percentages": [
+    {
+     "label": "Energy charges",
+     "value": 83.39
+    },
+    {
+     "label": "Taxes and duties",
+     "value": 16.61
+    }
+   ],
+   "usage_history": [
+    {
+     "month": "2025-04",
+     "units": 141,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-05",
+     "units": 138,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-06",
+     "units": 197,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-07",
+     "units": 239,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-08",
+     "units": 203,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-09",
+     "units": 176,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-10",
+     "units": 173,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-11",
+     "units": 187,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-12",
+     "units": 124,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-01",
+     "units": 96,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-02",
+     "units": 88,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-03",
+     "units": 115,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-04",
+     "units": 151,
+     "bill": null,
+     "payment": null,
+     "is_current": true
+    }
+   ],
+   "notes": []
+  },
+  "checks": [],
+  "runs": 3
+ },
+ "answers": {
+  "How much of my bill is taxes?": "Taxes and duties total PKR 569.62 out of your current bill of PKR 3,430.24, or about 16.6%. The bill shows a split of 83.39% energy charges and 16.61% taxes. The tax lines are sales tax (PKR 520.21), electricity duty (PKR 29.41), and MUCT (KMC) (PKR 20.00).",
+  "How many months in my history went above 200 units?": "Two of the 12 previous months exceeded 200 units: July 2025 (239) and August 2025 (203). The current month used 151 units, so the count is two whether or not the current month is included."
+ }
+}

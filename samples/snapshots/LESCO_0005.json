@@ -1,0 +1,162 @@
+{
+ "bill_id": "LESCO_0005",
+ "title": "LESCO, July 2026, net metering",
+ "extraction": {
+  "level1": {
+   "provider": "LESCO",
+   "tariff": "A-1b(03)T",
+   "sanctioned_load_kw": 10,
+   "bill_month": "2026-07",
+   "reading_date": "2026-07-17",
+   "issue_date": "2026-07-20",
+   "due_date": "2026-07-30",
+   "previous_reading": null,
+   "current_reading": null,
+   "units_consumed": null,
+   "charges": [
+    {
+     "type": "energy",
+     "amount": 17367.77
+    }
+   ],
+   "total_charges": 17367.77,
+   "taxes": [],
+   "total_taxes": 3358.23,
+   "current_bill": 20726,
+   "arrears": -75496,
+   "payable_within_due_date": -54770,
+   "payable_after_due_date": null
+  },
+  "extra": {
+   "line_details": [
+    {
+     "label": "Total Electricity Charges",
+     "section": "charges",
+     "units": null,
+     "rate": null,
+     "amount": 17367.77
+    },
+    {
+     "label": "Net Electricity Charges",
+     "section": "charges",
+     "units": null,
+     "rate": null,
+     "amount": 17367.77
+    },
+    {
+     "label": "Taxes",
+     "section": "taxes",
+     "units": null,
+     "rate": null,
+     "amount": 3358.23
+    }
+   ],
+   "late_payment_amounts": [],
+   "notes": [
+    "Net metering connection with a credit balance: the amount payable is printed as 54770CR (a credit), and the late amount reads NOT TO BE PAID."
+   ],
+   "meter_rows": [
+    {
+     "label": null,
+     "previous": 11561,
+     "current": 12578,
+     "units": 1017
+    },
+    {
+     "label": null,
+     "previous": 3260,
+     "current": 3562,
+     "units": 302
+    },
+    {
+     "label": null,
+     "previous": 21822,
+     "current": 22859,
+     "units": 1037
+    }
+   ],
+   "usage_history": [
+    {
+     "month": "2025-08",
+     "units": 225,
+     "bill": -21364,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-09",
+     "units": -142,
+     "bill": -22475,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-10",
+     "units": -176,
+     "bill": -21274,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-11",
+     "units": -440,
+     "bill": -20094,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-12",
+     "units": -162,
+     "bill": -29501,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-01",
+     "units": 359,
+     "bill": -8052,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-02",
+     "units": -809,
+     "bill": -6686,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-03",
+     "units": -818,
+     "bill": -38209,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-04",
+     "units": -402,
+     "bill": -34226,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-05",
+     "units": -1955,
+     "bill": -30243,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-06",
+     "units": -152,
+     "bill": -75496,
+     "payment": null,
+     "is_current": false
+    }
+   ]
+  },
+  "checks": [],
+  "runs": 3
+ },
+ "answers": {}
+}

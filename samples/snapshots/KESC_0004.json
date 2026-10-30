@@ -1,0 +1,295 @@
+{
+ "bill_id": "KESC_0004",
+ "title": "K-Electric, June 2026, net metering",
+ "extraction": {
+  "level1": {
+   "provider": "KE",
+   "tariff": "A1-R",
+   "sanctioned_load_kw": 10,
+   "bill_month": "2026-06",
+   "reading_date": "2026-06-25",
+   "issue_date": "2026-06-29",
+   "due_date": "2026-07-13",
+   "previous_reading": null,
+   "current_reading": null,
+   "units_consumed": 901,
+   "charges": [
+    {
+     "type": "fixed",
+     "amount": 3375
+    },
+    {
+     "type": "energy",
+     "amount": 26257.99
+    },
+    {
+     "type": "energy",
+     "amount": 6582.43
+    },
+    {
+     "type": "quarterly_adjustment",
+     "amount": -1442.74
+    },
+    {
+     "type": "quarterly_adjustment",
+     "amount": 61.1
+    },
+    {
+     "type": "fpa",
+     "amount": 354.19
+    },
+    {
+     "type": "surcharge",
+     "amount": 2910.04
+    }
+   ],
+   "total_charges": 38098.01,
+   "taxes": [
+    {
+     "type": "electricity_duty",
+     "amount": 520.85
+    },
+    {
+     "type": "gst",
+     "amount": 6951.39
+    }
+   ],
+   "total_taxes": 7472.24,
+   "current_bill": 45570.25,
+   "arrears": -91877.02,
+   "payable_within_due_date": 0,
+   "payable_after_due_date": 0
+  },
+  "extra": {
+   "line_details": [
+    {
+     "label": "Fixed Charges",
+     "section": "charges",
+     "units": 5,
+     "rate": 675,
+     "amount": 3375
+    },
+    {
+     "label": "Variable Off Peak",
+     "section": "charges",
+     "units": 760.44,
+     "rate": 34.53,
+     "amount": 26257.99
+    },
+    {
+     "label": "Variable Peak",
+     "section": "charges",
+     "units": 140.5,
+     "rate": 46.85,
+     "amount": 6582.43
+    },
+    {
+     "label": "Uniform Quarterly Adjustment",
+     "section": "charges",
+     "units": 726.57,
+     "rate": -1.9857,
+     "amount": -1442.74
+    },
+    {
+     "label": "Uniform Quarterly Adjustment",
+     "section": "charges",
+     "units": 174.37,
+     "rate": 0.3504,
+     "amount": 61.1
+    },
+    {
+     "label": "FCA :Apr-26",
+     "section": "charges",
+     "units": 297.46,
+     "rate": 1.1907,
+     "amount": 354.19
+    },
+    {
+     "label": "Additional Surcharge (PHL)",
+     "section": "charges",
+     "units": 900.94,
+     "rate": 3.23,
+     "amount": 2910.04
+    },
+    {
+     "label": "Electricity Duty",
+     "section": "taxes",
+     "units": null,
+     "rate": null,
+     "amount": 520.85
+    },
+    {
+     "label": "Sales Tax u/s 3(1)",
+     "section": "taxes",
+     "units": null,
+     "rate": null,
+     "amount": 6951.39
+    },
+    {
+     "label": "Opening Balance",
+     "section": "other",
+     "units": null,
+     "rate": null,
+     "amount": -91877.02
+    },
+    {
+     "label": "Net Metering Benefit",
+     "section": "other",
+     "units": null,
+     "rate": null,
+     "amount": -114640.13
+    },
+    {
+     "label": "Outstanding Balance",
+     "section": "other",
+     "units": null,
+     "rate": null,
+     "amount": -160946.9
+    }
+   ],
+   "late_payment_amounts": [
+    {
+     "label": "14–16 Jul",
+     "amount": 0
+    },
+    {
+     "label": "After 16 Jul",
+     "amount": 0
+    }
+   ],
+   "percentages": [
+    {
+     "label": "Energy charges",
+     "value": 83.6
+    },
+    {
+     "label": "Taxes and duties",
+     "value": 16.4
+    }
+   ],
+   "meter_rows": [
+    {
+     "label": "Energy - Off Peak",
+     "previous": 1163.29,
+     "current": 1923.73,
+     "units": 760.44
+    },
+    {
+     "label": "Energy - Peak",
+     "previous": 402.35,
+     "current": 542.85,
+     "units": 140.5
+    },
+    {
+     "label": "Import Energy Off Peak",
+     "previous": 10865.55,
+     "current": 12238.4,
+     "units": 1372.85
+    },
+    {
+     "label": "Import Energy Peak",
+     "previous": 4.97,
+     "current": 6.53,
+     "units": 1.56
+    }
+   ],
+   "usage_history": [
+    {
+     "month": "2025-06",
+     "units": 943,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-07",
+     "units": 637,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-08",
+     "units": 665,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-09",
+     "units": 555,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-10",
+     "units": 522,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-11",
+     "units": 143,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-12",
+     "units": 121,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-01",
+     "units": 114,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-02",
+     "units": 131,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-03",
+     "units": 187,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-04",
+     "units": 298,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-05",
+     "units": 599,
+     "bill": null,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-06",
+     "units": 901,
+     "bill": null,
+     "payment": null,
+     "is_current": true
+    }
+   ],
+   "notes": []
+  },
+  "checks": [],
+  "runs": 3
+ },
+ "answers": {}
+}

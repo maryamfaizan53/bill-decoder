@@ -1,0 +1,236 @@
+@import "tailwindcss";
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource/noto-nastaliq-urdu/400.css";
+
+/*
+ * Palette "grid & meter": cool bill-paper ground, teal ink from utility forms,
+ * and amber used ONLY for the meter readout (the one loud element on the page).
+ */
+:root {
+  --paper: #eef2f1;
+  --surface: #ffffff;
+  --ink: #10242b;
+  --muted: #56696d;
+  --rule: #d3dcda;
+  --grid: #0e6e6a;
+  --grid-soft: #dcebe8;
+  --meter: #f0a92e;
+  --meter-glass: #0e1a1c;
+  --meter-dim: #3a3320;
+  --credit: #1f7a52;
+  --debit: #b3432f;
+  --focus: #0e6e6a;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0e1719;
+    --surface: #142124;
+    --ink: #e3ecea;
+    --muted: #93a5a8;
+    --rule: #26373a;
+    --grid: #4fb8ae;
+    --grid-soft: #17302f;
+    --meter-glass: #070d0e;
+    --credit: #4cc28d;
+    --debit: #ef7e68;
+    --focus: #4fb8ae;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-grid: var(--grid);
+  --color-grid-soft: var(--grid-soft);
+  --color-meter: var(--meter);
+  --color-credit: var(--credit);
+  --color-debit: var(--debit);
+  --font-sans: "Archivo Variable", system-ui, sans-serif;
+  --font-urdu: "Noto Nastaliq Urdu", serif;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background: var(--paper);
+  min-height: 100dvh;
+  font-feature-settings: "tnum" 0;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Display type: Archivo opened up wide and heavy */
+.display {
+  font-stretch: 118%;
+  font-weight: 780;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+.heading {
+  font-stretch: 108%;
+  font-weight: 680;
+  letter-spacing: -0.01em;
+}
+.urdu {
+  font-family: var(--font-urdu);
+  direction: rtl;
+  line-height: 2.1;
+  font-weight: 400;
+}
+
+/* ---------- Meter readout (the signature element) ---------- */
+.meter {
+  background: var(--meter-glass);
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #ffffff14, inset 0 10px 30px #00000066;
+  color: var(--meter);
+}
+.meter-digits {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 0.06em;
+  font-stretch: 72%;
+  font-weight: 620;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  text-shadow: 0 0 18px #f0a92e55;
+}
+.meter-cell {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  position: relative;
+}
+.meter-reel {
+  display: flex;
+  flex-direction: column;
+  transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.meter-reel > span {
+  height: 1em;
+  display: block;
+}
+.meter-ghost {
+  color: var(--meter-dim);
+  text-shadow: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .meter-reel {
+    transition: none;
+  }
+}
+
+/* ---------- Pipeline steps ---------- */
+.step-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  border: 2px solid var(--rule);
+  background: var(--paper);
+  flex: none;
+}
+.step-dot[data-state="active"] {
+  border-color: var(--grid);
+  background: var(--grid-soft);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+.step-dot[data-state="done"] {
+  border-color: var(--grid);
+  background: var(--grid);
+}
+.step-dot[data-state="skip"] {
+  border-style: dashed;
+}
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--grid) 22%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .step-dot[data-state="active"] {
+    animation: none;
+  }
+}
+
+/* ---------- Drop zone ---------- */
+.dropzone {
+  border: 2px dashed color-mix(in srgb, var(--grid) 55%, var(--rule));
+  background: var(--surface);
+  border-radius: 14px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.dropzone[data-over="true"] {
+  border-color: var(--grid);
+  background: var(--grid-soft);
+}
+
+/* Section titles on the result page: English + Urdu pair, like the bills themselves */
+.section-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  font-stretch: 104%;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn-primary {
+  background: var(--grid);
+  color: var(--paper);
+}
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--grid) 85%, var(--ink));
+}
+.btn-quiet {
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+.btn-quiet:hover {
+  border-color: var(--grid);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chip {
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+.chip:hover {
+  border-color: var(--grid);
+}

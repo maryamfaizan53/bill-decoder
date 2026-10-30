@@ -1,0 +1,156 @@
+{
+ "bill_id": "LESCO_0006",
+ "title": "LESCO, August 2026, commercial",
+ "extraction": {
+  "level1": {
+   "provider": "LESCO",
+   "tariff": "A-2a(04)",
+   "sanctioned_load_kw": 1,
+   "bill_month": "2026-08",
+   "reading_date": "2026-08-26",
+   "issue_date": "2026-08-29",
+   "due_date": "2026-09-09",
+   "previous_reading": 22238,
+   "current_reading": 22303,
+   "units_consumed": 65,
+   "charges": [
+    {
+     "type": "energy",
+     "amount": 3777.49
+    }
+   ],
+   "total_charges": 3777.49,
+   "taxes": [],
+   "total_taxes": 1723.51,
+   "current_bill": 5501,
+   "arrears": 39411,
+   "payable_within_due_date": 44912,
+   "payable_after_due_date": 45263
+  },
+  "extra": {
+   "line_details": [
+    {
+     "label": "Total Electricity Charges",
+     "section": "charges",
+     "units": null,
+     "rate": null,
+     "amount": 3777.49
+    },
+    {
+     "label": "Net Electricity Charges",
+     "section": "charges",
+     "units": null,
+     "rate": null,
+     "amount": 3777.49
+    },
+    {
+     "label": "Taxes",
+     "section": "taxes",
+     "units": null,
+     "rate": null,
+     "amount": 1723.51
+    }
+   ],
+   "late_payment_amounts": [
+    {
+     "label": "Up to 14 Sep",
+     "amount": 45088
+    },
+    {
+     "label": "After 14 Sep",
+     "amount": 45263
+    }
+   ],
+   "usage_history": [
+    {
+     "month": "2025-08",
+     "units": 440,
+     "bill": 52906,
+     "payment": 52906,
+     "is_current": false
+    },
+    {
+     "month": "2025-09",
+     "units": 407,
+     "bill": 23954,
+     "payment": 25632,
+     "is_current": false
+    },
+    {
+     "month": "2025-10",
+     "units": 243,
+     "bill": 15558,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2025-11",
+     "units": 166,
+     "bill": 27502,
+     "payment": 27502,
+     "is_current": false
+    },
+    {
+     "month": "2025-12",
+     "units": 206,
+     "bill": 13486,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-01",
+     "units": 124,
+     "bill": 23089,
+     "payment": 23089,
+     "is_current": false
+    },
+    {
+     "month": "2026-02",
+     "units": 187,
+     "bill": 12775,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-03",
+     "units": 257,
+     "bill": 31155,
+     "payment": 31692,
+     "is_current": false
+    },
+    {
+     "month": "2026-04",
+     "units": 264,
+     "bill": 17999,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-05",
+     "units": 434,
+     "bill": 47317,
+     "payment": 48257,
+     "is_current": false
+    },
+    {
+     "month": "2026-06",
+     "units": 350,
+     "bill": 22523,
+     "payment": null,
+     "is_current": false
+    },
+    {
+     "month": "2026-07",
+     "units": 225,
+     "bill": 38441,
+     "payment": null,
+     "is_current": false
+    }
+   ],
+   "notes": []
+  },
+  "checks": [],
+  "runs": 3
+ },
+ "answers": {}
+}

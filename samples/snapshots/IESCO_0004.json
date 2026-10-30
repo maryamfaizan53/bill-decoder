@@ -1,0 +1,188 @@
+{
+ "bill_id": "IESCO_0004",
+ "title": "IESCO, September 2026",
+ "extraction": {
+  "level1": {
+   "provider": "IESCO",
+   "tariff": "A-1A(01)",
+   "sanctioned_load_kw": 3,
+   "bill_month": "2026-09",
+   "reading_date": "2026-09-25",
+   "issue_date": "2026-09-26",
+   "due_date": "2026-10-08",
+   "previous_reading": 9301,
+   "current_reading": 9459,
+   "units_consumed": 158,
+   "charges": [
+    {
+     "type": "energy",
+     "amount": 6102
+    },
+    {
+     "type": "subsidy",
+     "amount": -3332
+    },
+    {
+     "type": "fpa",
+     "amount": 267
+    }
+   ],
+   "total_charges": 2770,
+   "taxes": [],
+   "total_taxes": 498,
+   "current_bill": 3267,
+   "arrears": 0,
+   "payable_within_due_date": 3535,
+   "payable_after_due_date": 3812
+  },
+  "extra": {
+   "line_details": [
+    {
+     "label": "Total Electricity Charges",
+     "section": "charges",
+     "units": null,
+     "rate": null,
+     "amount": 6102
+    },
+    {
+     "label": "Subsidies",
+     "section": "charges",
+     "units": null,
+     "rate": null,
+     "amount": -3332
+    },
+    {
+     "label": "Total FPA",
+     "section": "charges",
+     "units": null,
+     "rate": null,
+     "amount": 267
+    },
+    {
+     "label": "Net Electricity Charges",
+     "section": "charges",
+     "units": null,
+     "rate": null,
+     "amount": 2770
+    },
+    {
+     "label": "Taxes",
+     "section": "taxes",
+     "units": null,
+     "rate": null,
+     "amount": 498
+    }
+   ],
+   "late_payment_amounts": [
+    {
+     "label": "Till 12 Oct",
+     "amount": 3674
+    },
+    {
+     "label": "After 12 Oct",
+     "amount": 3812
+    }
+   ],
+   "percentages": [
+    {
+     "label": "Net electricity charges",
+     "value": 84.76
+    },
+    {
+     "label": "Taxes",
+     "value": 15.24
+    }
+   ],
+   "usage_history": [
+    {
+     "month": "2025-09",
+     "units": 20,
+     "bill": 215,
+     "payment": 215,
+     "is_current": false
+    },
+    {
+     "month": "2025-10",
+     "units": 163,
+     "bill": 1930,
+     "payment": 1930,
+     "is_current": false
+    },
+    {
+     "month": "2025-11",
+     "units": 148,
+     "bill": 1971,
+     "payment": 1971,
+     "is_current": false
+    },
+    {
+     "month": "2025-12",
+     "units": 102,
+     "bill": 1357,
+     "payment": 1357,
+     "is_current": false
+    },
+    {
+     "month": "2026-01",
+     "units": 105,
+     "bill": 1415,
+     "payment": 1415,
+     "is_current": false
+    },
+    {
+     "month": "2026-02",
+     "units": 116,
+     "bill": 2016,
+     "payment": 2016,
+     "is_current": false
+    },
+    {
+     "month": "2026-03",
+     "units": 104,
+     "bill": 2665,
+     "payment": 2665,
+     "is_current": false
+    },
+    {
+     "month": "2026-04",
+     "units": 133,
+     "bill": 3130,
+     "payment": 3130,
+     "is_current": false
+    },
+    {
+     "month": "2026-05",
+     "units": 176,
+     "bill": 3634,
+     "payment": 3634,
+     "is_current": false
+    },
+    {
+     "month": "2026-06",
+     "units": 197,
+     "bill": 894,
+     "payment": 3600,
+     "is_current": false
+    },
+    {
+     "month": "2026-07",
+     "units": 110,
+     "bill": 566,
+     "payment": 0,
+     "is_current": false
+    },
+    {
+     "month": "2026-08",
+     "units": 47,
+     "bill": 3198,
+     "payment": 3198,
+     "is_current": false
+    }
+   ],
+   "notes": []
+  },
+  "checks": [],
+  "runs": 3
+ },
+ "answers": {}
+}

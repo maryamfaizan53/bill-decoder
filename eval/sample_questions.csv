@@ -1,0 +1,13 @@
+question_id,question
+Q1,How much of my bill is taxes?
+Q2,How many months in my history went above 200 units?
+Q3,What is my average monthly consumption over the bill history?
+Q4,How much extra will I pay if I pay after the due date?
+Q5,What is the average cost per unit on this bill?
+Q6,Did my consumption go up or down compared to last month?
+Q7,What is the fuel price adjustment on this bill and what does it mean?
+Q8,Estimate my bill next month if I use 20% fewer units.
+Q9,Do I have any outstanding dues or credit?
+Q10,What is my tariff and sanctioned load?
+Q11,When is my bill due and how many days do I have from the issue date?
+Q12,Which charge is the largest part of my bill?

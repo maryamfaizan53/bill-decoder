@@ -1,0 +1,13 @@
+node_modules
+.next
+.env
+.env.local
+.cache
+.data
+output
+report
+submission.zip
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+*.pdf
