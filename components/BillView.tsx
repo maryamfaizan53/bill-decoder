@@ -6,6 +6,7 @@ import type { ProgressEvent, ProgressStep } from "@/lib/pipeline/extract";
 import type { DecodeResult } from "@/lib/server/bills";
 import type { HistoryRow } from "@/lib/pipeline/history";
 import { PROVIDER_NAMES, dateLabel, monthLong, num, pkr } from "@/lib/format";
+import { recallFile } from "@/lib/clientFiles";
 import { AskPanel } from "./AskPanel";
 import { Meter } from "./Meter";
 import { Checks, MoneyBreakdown, SectionTitle, Timeline } from "./sections";
@@ -32,7 +33,16 @@ export function BillView({ id }: { id: string }) {
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch(`/api/decode?id=${encodeURIComponent(id)}`);
+        const file = recallFile(id);
+        let res: Response;
+        if (file) {
+          const body = new FormData();
+          body.append("id", id);
+          body.append("bill", file);
+          res = await fetch("/api/decode", { method: "POST", body });
+        } else {
+          res = await fetch(`/api/decode?id=${encodeURIComponent(id)}`);
+        }
         if (!res.body) throw new Error("No response from the server.");
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
@@ -231,7 +241,7 @@ function Result({ r }: { r: DecodeResult }) {
 
       <section aria-labelledby="ask-title">
         <SectionTitle id="ask-title" en="Ask about this bill" ur="اس بل کے بارے میں پوچھیں" />
-        <AskPanel id={r.id} live={r.mode === "live"} savedQuestions={r.savedQuestions} />
+        <AskPanel id={r.id} live={r.mode === "live"} savedQuestions={r.savedQuestions} context={{ extraction: r.extraction, history: r.history }} />
       </section>
 
       <section aria-labelledby="checks-title">

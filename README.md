@@ -81,6 +81,14 @@ npm run dev                 # http://localhost:3000
 
 For production: `npm run build && npm start`.
 
+### Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmaryamfaizan53%2Fbill-decoder&env=API_KEY,MODEL_PROVIDER,MODEL_NAME&envDescription=Model%20settings%3A%20see%20.env.example&envLink=https%3A%2F%2Fgithub.com%2Fmaryamfaizan53%2Fbill-decoder%2Fblob%2Fmain%2F.env.example&project-name=bill-decoder)
+
+Or import the repo at [vercel.com/new](https://vercel.com/new) and add `API_KEY`, `MODEL_PROVIDER` and `MODEL_NAME` as environment variables. Without `API_KEY` the deployment runs in sample mode.
+
+On Vercel the app writes uploads and cache under `/tmp`, which is per instance and temporary. To stay correct when requests land on different instances, the browser re-sends the bill image with the decode request and sends the decoded result with each question. A shared link to an uploaded bill can expire once its instance is recycled; sample bills always work.
+
 ### Environment
 
 | Variable | Default | Purpose |

@@ -13,7 +13,18 @@ const SUGGESTED = [
   "Estimate my bill next month if I use 20% fewer units.",
 ];
 
-export function AskPanel({ id, live, savedQuestions }: { id: string; live: boolean; savedQuestions: string[] }) {
+export function AskPanel({
+  id,
+  live,
+  savedQuestions,
+  context,
+}: {
+  id: string;
+  live: boolean;
+  savedQuestions: string[];
+  /** The decoded bill, sent along so any server instance can answer without reading the bill again. */
+  context?: { extraction: unknown; history: unknown };
+}) {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -27,7 +38,7 @@ export function AskPanel({ id, live, savedQuestions }: { id: string; live: boole
     setInput("");
     setTurns((t) => [...t, { q }]);
     try {
-      const res = await fetch("/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id, question: q }) });
+      const res = await fetch("/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id, question: q, ...context }) });
       const json = await res.json();
       setTurns((t) => t.map((x, i) => (i === t.length - 1 ? (res.ok ? { ...x, a: json.answer, mode: json.mode } : { ...x, error: json.error }) : x)));
     } catch {

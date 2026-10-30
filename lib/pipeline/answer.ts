@@ -118,15 +118,27 @@ const calculate = tool({
   },
 });
 
-export async function answerQuestions(billId: string, file: string, ex: Extraction, questions: Question[], opts: { force?: boolean } = {}) {
+/**
+ * @param file  bill image path, or null when the image isn't available (answers then use the extracted data only)
+ * @param opts.history  usage history already read for this bill (skips the focused history read)
+ */
+export async function answerQuestions(
+  billId: string,
+  file: string | null,
+  ex: Extraction,
+  questions: Question[],
+  opts: { force?: boolean; history?: HistoryRow[] | null } = {},
+) {
   const cacheId = `${billId}`;
   const cached = (!opts.force && (await readCache<Record<string, string>>("answers", cacheId))) || {};
   const todo = questions.filter((q) => !cached[`${q.question_id}::${q.question}`]);
   if (!todo.length) { log(`💾 ${billId}: using cached answers`); return pick(cached, questions); }
 
-  const [image] = await prepareImages(file, false);
-  const focused = await readHistory(billId, file, ex.level1.provider, ex.level1.bill_month);
-  const history = mergeHistory(focused, ex.extra.usage_history, ex.level1.bill_month);
+  const image = file ? (await prepareImages(file, false))[0] : null;
+  const history =
+    opts.history !== undefined
+      ? opts.history
+      : mergeHistory(file ? await readHistory(billId, file, ex.level1.provider, ex.level1.bill_month) : null, ex.extra.usage_history, ex.level1.bill_month);
   const extra = history ? { ...ex.extra, usage_history: history } : ex.extra;
   const context = `BILL ${billId}
 LEVEL 1 DATA (extracted from the bill):
@@ -154,8 +166,12 @@ ${JSON.stringify(computeFacts(ex, history), null, 1)}`;
               role: "user",
               content: [
                 { type: "text", text: context },
-                { type: "text", text: "[Bill image, for checking anything not in the data]" },
-                { type: "file", data: image.data, mediaType: image.mediaType },
+                ...(image
+                  ? [
+                      { type: "text" as const, text: "[Bill image, for checking anything not in the data]" },
+                      { type: "file" as const, data: image.data, mediaType: image.mediaType },
+                    ]
+                  : []),
                 {
                   type: "text",
                   text: `Answer each question below. Use the calculate tool for all arithmetic. When finished, reply with ONLY a JSON object mapping question_id to the answer text, e.g. {"Q1": "...", "Q2": "..."}.

@@ -5,8 +5,11 @@ export const maxDuration = 120;
 
 export async function POST(req: Request) {
   try {
-    const { id, question } = (await req.json()) as { id?: string; question?: string };
-    const res = await askBill(String(id ?? ""), String(question ?? ""));
+    const body = (await req.json()) as { id?: string; question?: string; extraction?: unknown; history?: unknown };
+    const res = await askBill(String(body.id ?? ""), String(body.question ?? ""), {
+      extraction: body.extraction as never,
+      history: Array.isArray(body.history) ? (body.history as never) : undefined,
+    });
     return Response.json(res);
   } catch (e) {
     if (e instanceof UserFacingError) return Response.json({ error: e.message }, { status: e.status });

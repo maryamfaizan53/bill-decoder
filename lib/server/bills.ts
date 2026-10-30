@@ -11,11 +11,13 @@ import { answerQuestions, computeFacts, mergeHistory } from "@/lib/pipeline/answ
 import { config, isModelConfigured } from "@/lib/pipeline/config";
 import { extractBill, type Extraction, type ProgressEvent } from "@/lib/pipeline/extract";
 import { readHistory, type HistoryRow } from "@/lib/pipeline/history";
+import { readCache } from "@/lib/pipeline/util";
 
 const ROOT = /* turbopackIgnore: true */ process.cwd();
 const SAMPLES_DIR = path.join(ROOT, "samples");
 const SNAPSHOT_DIR = path.join(SAMPLES_DIR, "snapshots");
-const UPLOAD_DIR = path.join(ROOT, ".data", "uploads");
+// Serverless hosts (Vercel) only allow writes under /tmp; elsewhere uploads live in .data/uploads.
+const UPLOAD_DIR = process.env.UPLOAD_DIR || (process.env.VERCEL ? "/tmp/bill-decoder/uploads" : path.join(ROOT, ".data", "uploads"));
 const EXTS = [".png", ".jpg", ".jpeg", ".webp"];
 const ID_RE = /^[A-Za-z0-9_-]{3,64}$/;
 
@@ -139,22 +141,38 @@ export async function decodeBill(id: string, onProgress?: (e: ProgressEvent) => 
   };
 }
 
+/** What the browser already holds for a decoded bill; lets another server instance answer without re-reading. */
+export type ClientContext = { extraction?: Extraction; history?: HistoryRow[] | null };
+
+function looksLikeExtraction(x: unknown): x is Extraction {
+  const e = x as Extraction;
+  return !!e && typeof e === "object" && !!e.level1 && typeof e.level1 === "object" && Array.isArray(e.level1.charges) && typeof e.extra === "object";
+}
+
 /** Answers one question about a decoded bill. */
-export async function askBill(id: string, question: string): Promise<{ answer: string; mode: "live" | "saved" }> {
+export async function askBill(id: string, question: string, client: ClientContext = {}): Promise<{ answer: string; mode: "live" | "saved" }> {
   const q = question.trim().replace(/\s+/g, " ");
   if (q.length < 3) throw new UserFacingError("Type a question about the bill first.");
   if (q.length > 400) throw new UserFacingError("Keep the question under 400 characters.");
+  validId(id);
   const found = await findImage(id);
-  if (!found) throw new UserFacingError("This bill could not be found. Upload it again.", 404);
 
   if (!isModelConfigured()) {
-    const snap = found.source === "sample" ? await readSnapshot(id) : null;
+    const snap = found?.source === "sample" ? await readSnapshot(id) : null;
     const saved = snap?.answers[q];
     if (saved) return { answer: saved, mode: "saved" };
     throw new UserFacingError("Answering new questions needs an API key. Add API_KEY to .env and restart the app.", 503);
   }
-  const extraction = await extractBill(id, found.file);
+
+  // Prefer this server's own reading; otherwise use the one the browser got from the decode step.
+  const cached = await readCache<Extraction>("extract", id);
+  const extraction = cached ?? (looksLikeExtraction(client.extraction) ? client.extraction : null);
+  if (!extraction) {
+    if (!found) throw new UserFacingError("This bill could not be found. Upload it again.", 404);
+    throw new UserFacingError("Open the bill again so it can be read before asking questions.", 409);
+  }
+  const history = Array.isArray(client.history) ? client.history : undefined;
   const qid = `web_${crypto.createHash("sha1").update(q).digest("hex").slice(0, 8)}`;
-  const answers = await answerQuestions(id, found.file, extraction, [{ question_id: qid, question: q }]);
+  const answers = await answerQuestions(id, found?.file ?? null, extraction, [{ question_id: qid, question: q }], { history });
   return { answer: answers[qid], mode: "live" };
 }

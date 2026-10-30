@@ -62,7 +62,8 @@ setModelForTests(
       if (last.role !== "tool")
         return { content: [{ type: "tool-call", toolCallId: "c1", toolName: "calculate", input: JSON.stringify({ expression: "569.62/3430.24*100" }) }], finishReason: fin("tool-calls"), usage, warnings: [] } as any;
       const pct = Number(JSON.stringify(last.content[0].output).match(/16\.6\d*/)?.[0] ?? 0).toFixed(2);
-      return { content: [{ type: "text", text: JSON.stringify({ Q1: `Taxes are PKR 569.62, or ${pct}% of the bill.` }) }], finishReason: fin("stop"), usage, warnings: [] } as any;
+      const qid = JSON.stringify(opts.prompt).match(/\\n(Q\d+|web_[0-9a-f]{8}): /)?.[1] ?? "Q1";
+      return { content: [{ type: "text", text: JSON.stringify({ [qid]: `Taxes are PKR 569.62, or ${pct}% of the bill.` }) }], finishReason: fin("stop"), usage, warnings: [] } as any;
     },
   }) as any,
 );
@@ -105,6 +106,16 @@ mode = "consistent";
 const answers = await answerQuestions("KESC_0008", img, ex1, [{ question_id: "Q1", question: "How much of my bill is taxes?" }], { force: true });
 assert.match(answers.Q1, /16\.61%/);
 ok("Level 2 answer uses the calculator tool result");
+
+// A fresh server instance with no image and no cache can still answer from what the browser sends.
+process.env.API_KEY ||= "test-key-for-selftest";
+const { askBill } = await import("../lib/server/bills");
+await fs.rm(`${tmp}/cache`, { recursive: true, force: true });
+const remote = await askBill("bill_000000000000", "How much of my bill is taxes?", { extraction: ex1, history: null });
+assert.equal(remote.mode, "live");
+assert.match(remote.answer, /16\.61%/);
+await assert.rejects(() => askBill("bill_000000000000", "How much of my bill is taxes?", {}), /Open the bill again|Upload it again/);
+ok("a server instance without the image or cache answers from the browser's copy of the bill");
 
 // ---------- 3. facts ----------
 const facts = computeFacts(ex1, [

@@ -32,7 +32,8 @@ export const config = {
   concurrency: int("CONCURRENCY", 2),
   /** Longest image edge sent to the model, in pixels. */
   maxImageEdge: int("MAX_IMAGE_EDGE", 1568),
-  cacheDir: env("CACHE_DIR", ".cache"),
+  // Serverless hosts (Vercel) only allow writes under /tmp.
+  cacheDir: env("CACHE_DIR", process.env.VERCEL ? "/tmp/bill-decoder/cache" : ".cache"),
 };
 
 function apiKey(): string {

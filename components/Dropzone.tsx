@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { rememberFile } from "@/lib/clientFiles";
 
 const ACCEPT = ["image/png", "image/jpeg", "image/webp"];
 
@@ -32,6 +33,7 @@ export function Dropzone() {
         const res = await fetch("/api/upload", { method: "POST", body });
         const json = await res.json();
         if (!res.ok) throw new Error(json.error ?? "The upload failed. Try again.");
+        rememberFile(json.id, file);
         router.push(`/bill/${json.id}`);
       } catch (e) {
         setError((e as Error).message);
