@@ -4,6 +4,8 @@ Reads Pakistani electricity bills (K-Electric, LESCO, IESCO) from a phone photo,
 
 Built for the **Women Tech Quest 2026 · Build with AI** competition (Utility Bill Decoder challenge), then extended into a full web app.
 
+**Live app: [bill-decoder-0.vercel.app](https://bill-decoder-0.vercel.app)**
+
 [![Demo video: a bill is uploaded, read step by step, decoded, and a question is answered](docs/screenshots/demo-poster.jpg)](docs/demo.mp4)
 
 **[Watch the demo (48 s)](docs/demo.mp4)**: upload a bill, watch each pipeline step, see the decoded result, and ask a question.
